@@ -17,54 +17,60 @@ export default function Home() {
   return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <section className="banner">
-          <img className="h-auto max-w-full" src="/src/img/Screenshot (103).png" alt="image description"/>
+          <img src={"/src/img/Screenshot (103).png"} className="h-auto max-w-full" alt="image description"/>
         </section>
 
         <section className="upcoming-events">
           Opkomende evenementen
           <section className="event-cards flex flex-row">
-            <div
-                className="p- max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
-              </a>
-              <div className="p-5">
+            <div className="pr-7">
+              <div
+                  className="p- max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                    technology acquisitions 2021</h5>
+                  <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                  technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <div className="p-5">
+                  <a href="#">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                      technology acquisitions 2021</h5>
+                  </a>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                    technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                </div>
               </div>
             </div>
-            <div
-                className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
-              </a>
-              <div className="p-5">
+            <div className="pr-7">
+              <div
+                  className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                    technology acquisitions 2021</h5>
+                  <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                  technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <div className="p-5">
+                  <a href="#">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                      technology acquisitions 2021</h5>
+                  </a>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                    technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                </div>
               </div>
             </div>
-            <div
-                className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
-              </a>
-              <div className="p-5">
+            <div className="">
+              <div
+                  className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                    technology acquisitions 2021</h5>
+                  <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
                 </a>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                  technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                <div className="p-5">
+                  <a href="#">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                      technology acquisitions 2021</h5>
+                  </a>
+                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
+                    technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                </div>
               </div>
-            </div>
+              </div>
           </section>
           <div className=" flex justify-center  pt-4">
             <button type="button"
@@ -74,7 +80,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="image-slider">
+        <section className="image-slider max-w-40">
           <Swiper
               // install Swiper modules
               modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -94,7 +100,6 @@ export default function Home() {
           </Swiper>
           );
         </section>
-
 
         <section className="FAQ">
           <div id="accordion-collapse" data-accordion="collapse">
