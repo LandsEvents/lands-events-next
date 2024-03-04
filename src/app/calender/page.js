@@ -1,20 +1,33 @@
 'use client';
-import {useState} from "react";
-import Calendar, {MonthView} from "react-calendar";
+import {useEffect, useState} from "react";
+import Calendar from "react-calendar";
 import "../globals.css"
+import {event} from "@/app/event";
+
 
 export default function Calender() {
-    const [events, setEvents] = useState([
-        new event(1, 'event 1', new Date(2024, 1, 1, 11), new Date(2024, 1, 3, 14, 30), null, 'description', 'catagory', 'location'),
-        new event(2, 'event 2', new Date(2024, 1, 24, 11), new Date(2024, 1, 25, 14, 30), null, 'description', 'catagory', 'location'),
-        new event(1, 'event 3', new Date(2024, 2, 7, 11), new Date(2024, 2, 7, 14, 30), null, 'description', 'catagory', 'location'),
-        new event(2, 'event 4', new Date(2024, 2, 20, 11), new Date(2024, 2, 20, 14, 30), null, 'description', 'catagory', 'location')]);
-
+    const [events, setEvents] = useState([])
     const [activeDate, setActiveDate] = useState(new Date());
 
-    let eventsInMonth = []
+    const [isLoading, setLoading] = useState(true)
 
-    console.log(activeDate)
+    useEffect(() => {
+        fetch('http://lands-events-laravel.test/api/events')
+            .then((res) => res.json())
+            .then((data) => {
+                let newEvents = []
+                for (const d of data) {
+                    newEvents[newEvents.length] = new event(d.id, d.name, new Date(d.begin_date), new Date(d.end_date), d.description, d.category, d.location, d.price)
+                }
+
+                setEvents(newEvents)
+                setLoading(false)
+            })
+    }, [])
+
+    if (isLoading) return <p>Loading...</p>
+
+    let eventsInMonth = []
     for (let e of events) {
         if (e.begin_date.getFullYear() >= activeDate.getFullYear() && e.end_date.getFullYear() <= activeDate.getFullYear() &&
             e.begin_date.getMonth() >= activeDate.getMonth() && e.end_date.getMonth() <= activeDate.getMonth()) {
@@ -69,6 +82,7 @@ export default function Calender() {
         }
         return null
     }
+
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
             <div>
@@ -104,25 +118,3 @@ export default function Calender() {
     );
 }
 
-class event {
-    id;
-    name;
-    begin_date;
-    end_date;
-    time;
-    description;
-    category;
-    location;
-    price;
-    constructor(id, name, begin_date, end_date, time, description, category, location, price) {
-        this.id = id;
-        this.name = name;
-        this.begin_date = begin_date;
-        this.end_date = end_date;
-        this.time = time;
-        this.description = description;
-        this.category = category;
-        this.location = location;
-        this.price = price;
-    }
-}
