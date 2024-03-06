@@ -44,23 +44,33 @@ export default function Calender() {
     function DayStyling(date, view) {
         if(view !== "month") return false
         if(events === undefined)  return false
-        for (let e of events) {
+        for (let e of eventsInMonth) {
             if(dateWithinRange(date, e.begin_date, e.end_date)) {
-                var yesterday = new Date(date.getTime());
+                let yesterday = new Date(date.getTime());
                 yesterday.setDate(date.getDate() - 1);
+                let wasY = false;
+                for (const e2 of eventsInMonth) {
+                    if (dateWithinRange(yesterday, e2.begin_date, e2.end_date)) {
+                        wasY = true
+                        break;
+                    }
+                }
 
-                yesterday = dateWithinRange(yesterday, e.begin_date, e.end_date);
-
-                var tomorrow = new Date(date.getTime());
+                let tomorrow = new Date(date.getTime());
                 tomorrow.setDate(date.getDate() + 1);
 
-                tomorrow = dateWithinRange(tomorrow, e.begin_date, e.end_date);
-
-                if(yesterday && tomorrow)
+                let wasT = false;
+                for (const e2 of eventsInMonth) {
+                    if (dateWithinRange(tomorrow, e2.begin_date, e2.end_date)) {
+                        wasT = true
+                        break;
+                    }
+                }
+                if(wasY && wasT)
                     return "bg-slate-800"
-                else if(yesterday)
+                else if(wasY)
                     return "rounded-r-lg bg-slate-800"
-                else if(tomorrow)
+                else if(wasT)
                     return "rounded-l-lg bg-slate-800"
                 else
                     return "rounded-full bg-slate-800"
@@ -85,7 +95,7 @@ export default function Calender() {
                     />
                     <button className={"bg-slate-900"} onClick={dateForward}>right</button>
                 </div>
-                <div className={"flex-col items-center"}>{eventsInMonth.map((e) => <EventCard className={'flex-1'} event={e} showFullDate={false}/> )}</div>
+                <div className={"flex-col items-center"}>{eventsInMonth.map((e) => {return <tr key={e.id}><EventCard className={'flex-1'} event={e} showFullDate={false}/></tr>} )}</div>
 
             </div>
         </main>
