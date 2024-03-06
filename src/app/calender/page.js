@@ -1,37 +1,22 @@
 'use client';
-import {useEffect, useState} from "react";
+import {useContext, useState} from "react";
 import Calendar from "react-calendar";
 import "../globals.css"
-import {event} from "@/app/event";
+import {EventCard} from "@/app/components/event";
+import {EventContext} from "@/app/libs/context";
 
 
 export default function Calender() {
-    const [events, setEvents] = useState([])
     const [activeDate, setActiveDate] = useState(new Date());
 
-    const [isLoading, setLoading] = useState(true)
-
-    useEffect(() => {
-        fetch('http://lands-events-laravel.test/api/events')
-            .then((res) => res.json())
-            .then((data) => {
-                let newEvents = []
-                for (const d of data) {
-                    newEvents[newEvents.length] = new event(d.id, d.name, new Date(d.begin_date), new Date(d.end_date), d.description, d.category, d.location, d.price)
-                }
-
-                setEvents(newEvents)
-                setLoading(false)
-            })
-    }, [])
-
-    if (isLoading) return <p>Loading...</p>
-
+    const [events, setEvents] = useContext(EventContext)
     let eventsInMonth = []
-    for (let e of events) {
-        if (e.begin_date.getFullYear() >= activeDate.getFullYear() && e.end_date.getFullYear() <= activeDate.getFullYear() &&
-            e.begin_date.getMonth() >= activeDate.getMonth() && e.end_date.getMonth() <= activeDate.getMonth()) {
-            eventsInMonth[eventsInMonth.length] = e
+    if(events !== undefined) {
+        for (let e of events) {
+            if (e.begin_date.getFullYear() >= activeDate.getFullYear() && e.end_date.getFullYear() <= activeDate.getFullYear() &&
+                e.begin_date.getMonth() >= activeDate.getMonth() && e.end_date.getMonth() <= activeDate.getMonth()) {
+                eventsInMonth[eventsInMonth.length] = e
+            }
         }
     }
 
@@ -58,6 +43,7 @@ export default function Calender() {
 
     function DayStyling(date, view) {
         if(view !== "month") return false
+        if(events === undefined)  return false
         for (let e of events) {
             if(dateWithinRange(date, e.begin_date, e.end_date)) {
                 var yesterday = new Date(date.getTime());
@@ -99,19 +85,7 @@ export default function Calender() {
                     />
                     <button className={"bg-slate-900"} onClick={dateForward}>right</button>
                 </div>
-                {eventsInMonth.map((e) =>
-                    <div>
-                        <div>{e.name} <span className={'text-sm text-slate-500'}>{e.location}</span></div>
-                        <span className={'text-sm text-slate-700'}>
-                            <span className={'mr-1'}>{e.begin_date.toLocaleDateString('default', {day: 'numeric'})}</span>
-                            <span className={'mr-1'}>{e.begin_date.toLocaleTimeString('default', { hour: 'numeric', minute: 'numeric'})}</span>
-                            <span className={'mr-1'}>-</span>
-                            <span className={'mr-1'}>{e.end_date.toLocaleDateString('default', {day: 'numeric'})}</span>
-                            <span className={'mr-1'}>{e.end_date.toLocaleTimeString('default', {hour: 'numeric', minute: 'numeric'})}</span>
-                        </span>
-                        <div>{e.description}</div>
-                    </div>)
-                }
+                <div className={"flex-col items-center"}>{eventsInMonth.map((e) => <EventCard className={'flex-1'} event={e} showFullDate={false}/> )}</div>
 
             </div>
         </main>
