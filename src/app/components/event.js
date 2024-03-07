@@ -47,7 +47,12 @@ export function EventCard({event, showFullDate}) {
 
     return (
         <div>
-            <div><Link href={"/event/" + event.id}>{event.name}</Link> <span className={'text-sm text-slate-500'}>{event.location}</span></div>
+            <div>
+                <Link href={"/event/" + event.id}>{event.name}</Link>
+                <br/>
+                <span className={'text-sm text-slate-500'}>{event.location}</span>
+                <span className={'text-sm text-slate-600 ml-1'}>{event.category}</span>
+            </div>
             <span className={'text-sm text-slate-700'}>
                                 {begin_date} <span className={'mr-1'}/>
                 {event.begin_date.toLocaleTimeString('default', {
