@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import Image from "next/image";
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
@@ -96,9 +96,7 @@ export default function Home() {
             <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
             <SwiperSlide>Slide 3</SwiperSlide>
             <SwiperSlide>Slide 4</SwiperSlide>
-            ...
           </Swiper>
-          );
         </section>
 
         <section className="FAQ">
