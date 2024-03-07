@@ -92,8 +92,8 @@ export default function Home() {
               onSwiper={(swiper) => console.log(swiper)}
               onSlideChange={() => console.log('slide change')}
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
+            <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
+            <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
             <SwiperSlide>Slide 3</SwiperSlide>
             <SwiperSlide>Slide 4</SwiperSlide>
             ...
@@ -111,7 +111,7 @@ export default function Home() {
                 <span>What is Flowbite?</span>
                 <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  <path stroke={"currentColor"} strokeLinecap={"round"}  strokeLinejoin={"round"} strokeWidth={"2"}
                         d="M9 5 5 1 1 5"/>
                 </svg>
               </button>
