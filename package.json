@@ -13,6 +13,7 @@
     "react": "^18",
     "react-dom": "^18",
     "swiper": "^11.0.7"
+    "react-calendar": "^4.8.0",
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
