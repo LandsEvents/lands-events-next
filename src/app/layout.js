@@ -5,6 +5,7 @@ import Context from "@/app/libs/context";
 import Header from "@/app/header";
 import Head from "next/head";
 import {Fragment} from "react";
+import Footer from "@/app/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         </Head>
         <Header/>
         <Context children={children}/>
+        <Footer/>
     </Fragment>
     );
 }

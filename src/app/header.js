@@ -14,10 +14,10 @@ export default function Header(){
                 </div>
                 <div className="w-1/3 flex flex-row justify-start">
                     <ul className="mt-[35px] text-lg text-white flex flex-row space-x-10">
-                        <li className="hover:italic hover:font-bold"><a href="#">Home</a></li>
+                        <li className="hover:italic hover:font-bold"><a href="/">Home</a></li>
                         <li className="hover:italic hover:font-bold"><a href="/calender">Events</a></li>
-                        <li className="hover:italic hover:font-bold"><a href="#">Fotoalbums</a></li>
-                        <li className="hover:italic hover:font-bold"><a href="#">Nieuws</a></li>
+                        <li className="hover:italic hover:font-bold"><a href="/fotoalbums">Fotoalbums</a></li>
+                        <li className="hover:italic hover:font-bold"><a href="/nieuws">Nieuws</a></li>
                     </ul>
                 </div>
                 <div className="w-1/3">
