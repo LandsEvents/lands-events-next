@@ -7,6 +7,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'lands-bg': '#d9d9d9',
+        'lands-accent':'#ed125d',
+        'lands-achter':'#cf8888',
+        'lands-geel':'#fadc00',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
