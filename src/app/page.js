@@ -132,7 +132,7 @@ export default function Home() {
                 <span>Is there a Figma file available?</span>
                 <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                         d="M9 5 5 1 1 5"/>
                 </svg>
               </button>
@@ -154,7 +154,7 @@ export default function Home() {
                 <span>What are the differences between Flowbite and Tailwind UI?</span>
                 <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                         d="M9 5 5 1 1 5"/>
                 </svg>
               </button>

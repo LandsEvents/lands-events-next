@@ -17,13 +17,18 @@ export const metadata = {
 export default function RootLayout({ children }) {
 
     return (
-    <Fragment>
+        <html>
         <Head>
             <html lang="en" className="bg-lands-bg"  />
         </Head>
-        <Header/>
-        <Context children={children}/>
-        <Footer/>
-    </Fragment>
+        <body>
+        <Fragment>
+
+            <Header/>
+            <Context children={children}/>
+            <Footer/>
+        </Fragment>
+        </body>
+        </html>
     );
 }
