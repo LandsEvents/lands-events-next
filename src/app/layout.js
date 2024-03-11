@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Head from 'next/head';
+import { Fragment } from 'react';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,8 +12,48 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+      <Fragment>
+          <Head>
+              <html lang="en" className="bg-lands-bg"  />
+          </Head>
+          <div className="w-screen h-[100px] bg-lands-accent flex flex-row justify-center">
+              <div className="ml-[200px] w-1/3 flex flex-row justify-start">
+                <div className="mr-[50px] h-[125px] w-[250px] bg-white">
+                    <a></a>
+                </div>
+              </div>
+              <div className="w-1/3 flex flex-row justify-start">
+                  <ul className="mt-[35px] text-lg text-white flex flex-row space-x-10">
+                      <li className="hover:italic hover:font-bold"><a href="#">Home</a></li>
+                      <li className="hover:italic hover:font-bold"><a href="#">Events</a></li>
+                      <li className="hover:italic hover:font-bold"><a href="#">Fotoalbums</a></li>
+                      <li className="hover:italic hover:font-bold"><a href="#">Nieuws</a></li>
+                  </ul>
+              </div>
+              <div className="w-1/3">
+              </div>
+          </div>
+          {children}
+          <div className="w-screen h-[300px] bg-gray-800 pt-10">
+            <div className="w-1/4 mb-5 flex justify-center">
+                <ul className="space-y-2">
+                    <p className="pb-5">Pagina's :</p>
+                    <li className="underline"><a href="#">Home</a></li>
+                    <li className="underline"><a href="#">Events</a></li>
+                    <li className="underline"><a href="#">Fotoalbums</a></li>
+                    <li className="underline"><a href="#">Nieuws</a></li>
+                </ul>
+            </div>
+              <div className="w-1/4 mt-5 mb-5">
+
+              </div>
+              <div className="w-1/4 mt-5 mb-5">
+
+              </div>
+              <div className="w-1/4 mt-5 mb-5">
+
+              </div>
+          </div>
+      </Fragment>
   );
 }
