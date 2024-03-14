@@ -15,23 +15,29 @@ import 'swiper/css/scrollbar';
 export default function Home() {
 
   return (
-      <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <main className="flex min-h-screen flex-col items-center justify-between bg-white">
         <section className="banner">
-          <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className="" alt="image description"/>
+          <div className="relative">
+            <Image width={2000} height={1000} src={'/images/BannerImg.jpg'} className="" alt="image description"/>
+            <h1 className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold">
+              Al jouw evenementen op een plek
+            </h1>
+          </div>
         </section>
 
         <section className="upcoming-events">
-         <h1 className=" flex justify-center pt-6 pb-6 text-xl font-bold"> Opkomende evenementen</h1>
+          <h1 className=" flex justify-center pt-6 pb-6 text-xl font-bold"> Opkomende evenementen</h1>
           <section className="event-cards flex flex-row">
             <div className="pr-7">
               <div
                   className="p- max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                  <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
+                  <img className="rounded-t-lg" src="/docs/images/blog/BannerImg.jpg" alt=""/>
                 </a>
                 <div className="p-5">
                   <a href="#">
-                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className="" alt="image description"/>
+                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className=""
+                           alt="image description"/>
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
                       technology acquisitions 2021</h5>
                   </a>
@@ -48,7 +54,8 @@ export default function Home() {
                 </a>
                 <div className="p-5">
                   <a href="#">
-                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className="" alt="image description"/>
+                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className=""
+                           alt="image description"/>
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
                       technology acquisitions 2021</h5>
                   </a>
@@ -65,7 +72,8 @@ export default function Home() {
                 </a>
                 <div className="p-5">
                   <a href="#">
-                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className="" alt="image description"/>
+                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className=""
+                           alt="image description"/>
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
                       technology acquisitions 2021</h5>
                   </a>
@@ -73,7 +81,7 @@ export default function Home() {
                     technology acquisitions of 2021 so far, in reverse chronological order.</p>
                 </div>
               </div>
-              </div>
+            </div>
           </section>
           <div className=" flex justify-center  pt-4">
             <button type="button"
@@ -90,15 +98,15 @@ export default function Home() {
               spaceBetween={50}
               slidesPerView={3}
               navigation
-              pagination={{ clickable: true }}
-              scrollbar={{ draggable: false }}
+              pagination={{clickable: true}}
+              scrollbar={{draggable: false}}
               onSwiper={(swiper) => console.log(swiper)}
               onSlideChange={() => console.log('slide change')}
           >
             <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
             <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
+            <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
+            <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
           </Swiper>
         </section>
 
@@ -112,7 +120,7 @@ export default function Home() {
                 <span>Zijn de evenementen op de website alleen voor studenten of kunnen anderen ook deelnemen?</span>
                 <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke={"currentColor"} strokeLinecap={"round"}  strokeLinejoin={"round"} strokeWidth={"2"}
+                  <path stroke={"currentColor"} strokeLinecap={"round"} strokeLinejoin={"round"} strokeWidth={"2"}
                         d="M9 5 5 1 1 5"/>
                 </svg>
               </button>
@@ -180,7 +188,8 @@ export default function Home() {
                 </ul>
               </div>
               l
-            </div>            <h2 id="accordion-collapse-heading-3">
+            </div>
+            <h2 id="accordion-collapse-heading-3">
               <button type="button"
                       className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
                       data-accordion-target="#accordion-collapse-body-3" aria-expanded="false"
@@ -211,12 +220,13 @@ export default function Home() {
                 </ul>
               </div>
               l
-            </div>            <h2 id="accordion-collapse-heading-3">
+            </div>
+            <h2 id="accordion-collapse-heading-3">
               <button type="button"
                       className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
                       data-accordion-target="#accordion-collapse-body-3" aria-expanded="false"
                       aria-controls="accordion-collapse-body-3">
-                <span>What are the differences between Flowbite and Tailwind UI?</span>
+                <span>W</span>
                 <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
