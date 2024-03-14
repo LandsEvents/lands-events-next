@@ -10,10 +10,23 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import {useState} from "react";
 
 
 export default function Home() {
+  // State to keep track of accordion state
+  const [accordionOpen, setAccordionOpen] = useState('');
 
+  // Function to toggle accordion
+  const toggleAccordion = (accordionId) => {
+    if (accordionOpen === accordionId) {
+      // If clicked accordion is already open, close it
+      setAccordionOpen('');
+    } else {
+      // Otherwise, open the clicked accordion
+      setAccordionOpen(accordionId);
+    }
+  };
   return (
       <main className="flex min-h-screen flex-col items-center justify-between bg-white">
         <section className="banner">
@@ -103,38 +116,45 @@ export default function Home() {
               onSwiper={(swiper) => console.log(swiper)}
               onSlideChange={() => console.log('slide change')}
           >
-            <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
-            <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
-            <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
-            <SwiperSlide><Image width={50} height={50} src={'/images/screenshot (103).png'}/></SwiperSlide>
+            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'}/></SwiperSlide>
+            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'}/></SwiperSlide>
+            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'}/></SwiperSlide>
+            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'}/></SwiperSlide>
           </Swiper>
         </section>
 
         <section className="FAQ">
           <div id="accordion-collapse" data-accordion="collapse">
             <h2 id="accordion-collapse-heading-1">
-              <button type="button"
-                      className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
-                      data-accordion-target="#accordion-collapse-body-1" aria-expanded="true"
-                      aria-controls="accordion-collapse-body-1">
+              <button
+                  type="button"
+                  className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+                  onClick={() => toggleAccordion('accordion-collapse-body-1')}
+                  aria-expanded={accordionOpen === 'accordion-collapse-body-1'}
+                  aria-controls="accordion-collapse-body-1"
+              >
                 <span>Zijn de evenementen op de website alleen voor studenten of kunnen anderen ook deelnemen?</span>
-                <svg data-accordion-icon className="w-3 h-3 rotate-180 shrink-0" aria-hidden="true"
-                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                  <path stroke={"currentColor"} strokeLinecap={"round"} strokeLinejoin={"round"} strokeWidth={"2"}
+                <svg
+                    data-accordion-icon
+                    className={`w-3 h-3 rotate-180 shrink-0 ${accordionOpen === 'accordion-collapse-body-1' ? 'rotate-180' : ''}`}
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 10 6"
+                >
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                         d="M9 5 5 1 1 5"/>
                 </svg>
               </button>
             </h2>
-            <div id="accordion-collapse-body-1" className="hidden" aria-labelledby="accordion-collapse-heading-1">
-              <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive
-                  components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-                <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a
-                    href="/docs/getting-started/introduction/"
-                    className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing
-                  websites even faster with components on top of Tailwind CSS.</p>
-              </div>
-            </div>
+          <div
+              id="accordion-collapse-body-1"
+              className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${accordionOpen === 'accordion-collapse-body-1' ? 'block' : 'hidden'}`}
+              aria-labelledby="accordion-collapse-heading-1"
+          >
+            <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+            <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing websites even faster with components on top of Tailwind CSS.</p>
+          </div>
             <h2 id="accordion-collapse-heading-2">
               <button type="button"
                       className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
