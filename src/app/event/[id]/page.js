@@ -1,5 +1,5 @@
 'use client';
-import {event} from "@/app/components/event";
+import {event} from "@/app/event/event";
 import {useEffect, useState} from "react";
 
 export default function Page({ params }) {

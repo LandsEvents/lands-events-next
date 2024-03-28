@@ -1,6 +1,6 @@
 'use client';
 import React, {createContext, useContext, useEffect} from "react";
-import { event } from "@/app/components/event";
+import { event } from "@/app/event/event";
 
 export const EventContext = createContext();
 export default function Context({children}) {
@@ -18,9 +18,6 @@ export default function Context({children}) {
                 setLoaded(true);
                 console.log(data)
                 setEvents(newEvents)
-            }).catch((reason) => {
-            setLoaded(true);
-            setConnected(false);
         })
     }, []);
 

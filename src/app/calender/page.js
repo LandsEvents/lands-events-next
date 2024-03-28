@@ -2,7 +2,7 @@
 import {useContext, useState} from "react";
 import Calendar from "react-calendar";
 import "../globals.css"
-import {EventCard} from "@/app/components/event";
+import {EventCard} from "@/app/event/event";
 import {EventContext} from "@/app/libs/context";
 
 
