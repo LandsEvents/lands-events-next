@@ -31,15 +31,17 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-between bg-white">
         <section className="banner">
           <div className="relative">
-            <Image width={2000} height={1000} src={'/images/BannerImg.jpg'} className="" alt="image description"/>
+            <Image width={2000} height={1000} src={'/images/BannerImg.jpg'} className="max-h-screen"
+                   alt="image description"/>
+            <div className="absolute inset-0 bg-black opacity-50"></div>
             <h1 className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold">
               Al jouw evenementen op een plek
             </h1>
           </div>
         </section>
 
-        <section className="upcoming-events">
-          <h1 className=" flex justify-center pt-6 pb-6 text-xl font-bold"> Opkomende evenementen</h1>
+        <section className="upcoming-events pt-20">
+          <h1 className=" flex justify-center pt-6 pb-6 text-3xl font-bold"> Opkomende evenementen</h1>
           <section className="event-cards flex flex-row">
             <div className="pr-7">
               <div
@@ -104,7 +106,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="image-slider max-w-40">
+        <section className="image-sliderc max-w-screen-2xl">
           <Swiper
               // install Swiper modules
               modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -116,14 +118,14 @@ export default function Home() {
               onSwiper={(swiper) => console.log(swiper)}
               onSlideChange={() => console.log('slide change')}
           >
-            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'}/></SwiperSlide>
-            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'}/></SwiperSlide>
-            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'}/></SwiperSlide>
-            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'}/></SwiperSlide>
+            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
+            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
+            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
+            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
           </Swiper>
         </section>
 
-        <section className="FAQ">
+        <section className="FAQ pt-20">
           <div id="accordion-collapse" data-accordion="collapse">
             <h2 id="accordion-collapse-heading-1">
               <button
@@ -133,7 +135,7 @@ export default function Home() {
                   aria-expanded={accordionOpen === 'accordion-collapse-body-1'}
                   aria-controls="accordion-collapse-body-1"
               >
-                <span>Zijn de evenementen op de website alleen voor studenten of kunnen anderen ook deelnemen?</span>
+                <span>Hoe kan ik mij aanmelden als beheerder om evenementen en nieuwsberichten te plaatsen op de Landstede-website?</span>
                 <svg
                     data-accordion-icon
                     className={`w-3 h-3 rotate-180 shrink-0 ${accordionOpen === 'accordion-collapse-body-1' ? 'rotate-180' : ''}`}
@@ -150,12 +152,7 @@ export default function Home() {
             <div id="accordion-collapse-body-1"
                  className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${accordionOpen === 'accordion-collapse-body-1' ? 'block' : 'hidden'}`}
                  aria-labelledby="accordion-collapse-heading-1">
-              <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive
-                components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-              <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a
-                  href="/docs/getting-started/introduction/"
-                  className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing
-                websites even faster with components on top of Tailwind CSS.</p>
+              <p className="mb-2 text-gray-500 dark:text-gray-400">Neem contact op met de beheerders van de website om toegang te krijgen tot het beheerderspaneel en om de benodigde informatie te ontvangen voor aanmelding.</p>
             </div>
 
             <h2 id="accordion-collapse-heading-2">
@@ -196,9 +193,8 @@ export default function Home() {
                   className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
                   onClick={() => toggleAccordion('accordion-collapse-body-3')}
                   aria-expanded={accordionOpen === 'accordion-collapse-body-3'}
-                  aria-controls="accordion-collapse-body-3"
-              >
-                <span>Zijn de evenementen op de website alleen voor studenten of kunnen anderen ook deelnemen?</span>
+                  aria-controls="accordion-collapse-body-3">
+                <span>Hoe kan ik meer informatie krijgen over een specifiek evenement dat op de website wordt vermeld?</span>
                 <svg
                     data-accordion-icon
                     className={`w-3 h-3 rotate-180 shrink-0 ${accordionOpen === 'accordion-collapse-body-3' ? 'rotate-180' : ''}`}
@@ -212,17 +208,10 @@ export default function Home() {
                 </svg>
               </button>
             </h2>
-            <div id="accordion-collapse-body-3" className="hidden" aria-labelledby="accordion-collapse-heading-3">
-              <div
-                  className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${accordionOpen === 'accordion-collapse-body-3' ? 'block' : 'hidden'}`}
-                  aria-labelledby="accordion-collapse-heading-3">
-                <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive
-                  components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-                <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a
-                    href="/docs/getting-started/introduction/"
-                    className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing
-                  websites even faster with components on top of Tailwind CSS.</p>
-              </div>
+            <div id="accordion-collapse-body-3"
+                 className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${accordionOpen === 'accordion-collapse-body-3' ? 'block' : 'hidden'}`}
+                 aria-labelledby="accordion-collapse-heading-3">
+              <p className="mb-2 text-gray-500 dark:text-gray-400">U kunt rechtstreeks contact opnemen met de organisatoren van het evenement voor meer informatie. De contactgegevens worden vaak vermeld op de evenementenpagina.</p>
             </div>
 
             <h2 id="accordion-collapse-heading-4">
@@ -231,9 +220,8 @@ export default function Home() {
                   className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
                   onClick={() => toggleAccordion('accordion-collapse-body-4')}
                   aria-expanded={accordionOpen === 'accordion-collapse-body-4'}
-                  aria-controls="accordion-collapse-body-4"
-              >
-                <span>Zijn de evenementen op de website alleen voor studenten of kunnen anderen ook deelnemen?</span>
+                  aria-controls="accordion-collapse-body-4">
+                <span>Worden er ook online evenementen of activiteiten op de website geplaatst, of zijn het alleen fysieke bijeenkomsten?</span>
                 <svg
                     data-accordion-icon
                     className={`w-3 h-3 rotate-180 shrink-0 ${accordionOpen === 'accordion-collapse-body-4' ? 'rotate-180' : ''}`}
@@ -247,17 +235,10 @@ export default function Home() {
                 </svg>
               </button>
             </h2>
-            <div id="accordion-collapse-body-4" className="hidden" aria-labelledby="accordion-collapse-heading-4">
-              <div
-                  className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${accordionOpen === 'accordion-collapse-body-4' ? 'block' : 'hidden'}`}
-                  aria-labelledby="accordion-collapse-heading-4">
-                <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive
-                  components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-                <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a
-                    href="/docs/getting-started/introduction/"
-                    className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing
-                  websites even faster with components on top of Tailwind CSS.</p>
-              </div>
+            <div id="accordion-collapse-body-4"
+                 className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${accordionOpen === 'accordion-collapse-body-4' ? 'block' : 'hidden'}`}
+                 aria-labelledby="accordion-collapse-heading-4">
+              <p className="mb-2 text-gray-500 dark:text-gray-400">Ja, naast fysieke evenementen worden ook online evenementen en activiteiten op de website geplaatst, indien relevant voor de Landstede-gemeenschap.</p>
             </div>
 
             <h2 id="accordion-collapse-heading-5">
@@ -266,9 +247,8 @@ export default function Home() {
                   className="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
                   onClick={() => toggleAccordion('accordion-collapse-body-5')}
                   aria-expanded={accordionOpen === 'accordion-collapse-body-5'}
-                  aria-controls="accordion-collapse-body-5"
-              >
-                <span>Zijn de evenementen op de website alleen voor studenten of kunnen anderen ook deelnemen?</span>
+                  aria-controls="accordion-collapse-body-5">
+                <span>Zijn de evenementen op de website gratis toegankelijk voor studenten en/of het publiek?</span>
                 <svg
                     data-accordion-icon
                     className={`w-3 h-3 rotate-180 shrink-0 ${accordionOpen === 'accordion-collapse-body-5' ? 'rotate-180' : ''}`}
@@ -282,18 +262,10 @@ export default function Home() {
                 </svg>
               </button>
             </h2>
-            <div id="accordion-collapse-body-5" className="hidden" aria-labelledby="accordion-collapse-heading-5">
-              <div
-                  className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${accordionOpen === 'accordion-collapse-body-5' ? 'block' : 'hidden'}`}
-                  aria-labelledby="accordion-collapse-heading-5"
-              >
-                <p className="mb-2 text-gray-500 dark:text-gray-400">Flowbite is an open-source library of interactive
-                  components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
-                <p className="text-gray-500 dark:text-gray-400">Check out this guide to learn how to <a
-                    href="/docs/getting-started/introduction/"
-                    className="text-blue-600 dark:text-blue-500 hover:underline">get started</a> and start developing
-                  websites even faster with components on top of Tailwind CSS.</p>
-              </div>
+            <div id="accordion-collapse-body-5"
+                 className={`p-5 border border-b-0 border-gray-200 dark:border-gray-700 ${accordionOpen === 'accordion-collapse-body-5' ? 'block' : 'hidden'}`}
+                 aria-labelledby="accordion-collapse-heading-5">
+              <p className="mb-2 text-gray-500 dark:text-gray-400">Ja, de meeste evenementen op de website van Landstede zijn gratis toegankelijk voor zowel studenten als het publiek. Eventuele kosten worden duidelijk vermeld op de evenementenpagina.</p>
             </div>
           </div>
         </section>
