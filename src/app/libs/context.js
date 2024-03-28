@@ -9,7 +9,7 @@ export default function Context({children}) {
     const [news, setNews] = React.useState()
     const [hasLoaded, setLoaded] = React.useState(0)
     useEffect(() => {
-        fetch('http://lands-events-laravel.test/api/events')
+        fetch('http://landsevents.test/api/events')
             .then((res) => res.json())
             .then((data) => {
                 let newEvents = []
