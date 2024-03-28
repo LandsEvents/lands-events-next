@@ -3,13 +3,14 @@ import {useContext, useState} from "react";
 import Calendar from "react-calendar";
 import "../globals.css"
 import {EventCard} from "@/app/event/event";
-import {EventContext} from "@/app/libs/context";
+import {EventContext, NewsContext} from "@/app/libs/context";
 
 
 export default function Calender() {
     const [activeDate, setActiveDate] = useState(new Date());
-
     const [events, setEvents] = useContext(EventContext)
+    const [news, setNews] = useContext(NewsContext)
+    console.log(news)
     let eventsInMonth = []
     if(events !== undefined) {
         for (let e of events) {
@@ -96,7 +97,6 @@ export default function Calender() {
                     <button className={"bg-slate-900"} onClick={dateForward}>right</button>
                 </div>
                 <div className={"flex-col items-center"}>{eventsInMonth.map((e) => {return <tr key={e.id}><EventCard className={'flex-1'} event={e} showFullDate={false}/></tr>} )}</div>
-
             </div>
         </main>
     );

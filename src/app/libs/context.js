@@ -4,9 +4,10 @@ import { event } from "@/app/event/event";
 import { nieuws } from "@/app/nieuws/nieuws";
 
 export const EventContext = createContext();
+export const NewsContext = createContext();
 export default function Context({children}) {
-    const [events, setEvents] = React.useState()
-    const [news, setNews] = React.useState()
+    const [events, setEvents] = React.useState([])
+    const [news, setNews] = React.useState([])
     const [hasLoaded, setLoaded] = React.useState(0)
     useEffect(() => {
         fetch('http://landsevents.test/api/events')
@@ -17,7 +18,6 @@ export default function Context({children}) {
                     newEvents[newEvents.length] = new event(d.id, d.name, new Date(d.begin_date), new Date(d.end_date), d.description, d.category, d.location, d.price)
                 }
                 setLoaded(true);
-                console.log(data)
                 setEvents(newEvents)
             }).catch((reason) => {
             setLoaded(hasLoaded+1);
@@ -28,17 +28,16 @@ export default function Context({children}) {
             .then((data) => {
                 let newNews = []
                 for (const d of data) {
-                    newNews[newNews.length] = new nieuws(d.id, d.name, d.body, d.event_id)
+                    newNews[newNews.length] = new nieuws(d.id, d.news_title, d.body, d.event_id, d.created_at, d.updated_at)
                 }
                 setLoaded(true);
-                console.log(data)
                 setNews(newNews)
             }).catch((reason) => {
             setLoaded(hasLoaded+1);
         })
     }, []);
 
-    if(hasLoaded < 2) {
+    if(!hasLoaded) {
         return (
             <div>
                 loading...
@@ -47,8 +46,10 @@ export default function Context({children}) {
     }
 
     return(
-        <EventContext.Provider value={[events, setEvents, news, setNews]}>
-            {children}
+        <EventContext.Provider value={[events, setEvents]}>
+            <NewsContext.Provider value={[news, setNews]}>
+                {children}
+            </NewsContext.Provider>
         </EventContext.Provider>
     )
 }
