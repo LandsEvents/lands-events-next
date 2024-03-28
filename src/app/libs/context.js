@@ -1,12 +1,14 @@
 'use client';
 import React, {createContext, useContext, useEffect} from "react";
-import { event } from "@/app/components/event";
+import { event } from "@/app/event/event";
+import { nieuws } from "@/app/nieuws/nieuws";
 
 export const EventContext = createContext();
+export const NewsContext = createContext();
 export default function Context({children}) {
-    const [events, setEvents] = React.useState()
-    const [hasLoaded, setLoaded] = React.useState(false)
-    const [hasConnected, setConnected] = React.useState(false)
+    const [events, setEvents] = React.useState([])
+    const [news, setNews] = React.useState([])
+    const [hasLoaded, setLoaded] = React.useState(0)
     useEffect(() => {
         fetch('http://landsevents.test/api/events')
             .then((res) => res.json())
@@ -16,11 +18,22 @@ export default function Context({children}) {
                     newEvents[newEvents.length] = new event(d.id, d.name, new Date(d.begin_date), new Date(d.end_date), d.description, d.category, d.location, d.price)
                 }
                 setLoaded(true);
-                console.log(data)
                 setEvents(newEvents)
             }).catch((reason) => {
-            setLoaded(true);
-            setConnected(false);
+            setLoaded(hasLoaded+1);
+        });
+
+        fetch('http://lands-events-laravel.test/api/news')
+            .then((res) => res.json())
+            .then((data) => {
+                let newNews = []
+                for (const d of data) {
+                    newNews[newNews.length] = new nieuws(d.id, d.news_title, d.body, d.event_id, d.created_at, d.updated_at)
+                }
+                setLoaded(true);
+                setNews(newNews)
+            }).catch((reason) => {
+            setLoaded(hasLoaded+1);
         })
     }, []);
 
@@ -32,18 +45,11 @@ export default function Context({children}) {
         )
     }
 
-    if(!hasConnected) {
-        return (
-            <EventContext.Provider value={[events, setEvents]}>
-                error connecting to server.
-                {children}
-            </EventContext.Provider>
-        )
-    }
-
     return(
         <EventContext.Provider value={[events, setEvents]}>
-            {children}
+            <NewsContext.Provider value={[news, setNews]}>
+                {children}
+            </NewsContext.Provider>
         </EventContext.Provider>
     )
 }
