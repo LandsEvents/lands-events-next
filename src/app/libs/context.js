@@ -8,7 +8,7 @@ export default function Context({children}) {
     const [hasLoaded, setLoaded] = React.useState(false)
     const [hasConnected, setConnected] = React.useState(false)
     useEffect(() => {
-        fetch('http://lands-events-laravel.test/api/events')
+        fetch('http://landsevents.test/api/events')
             .then((res) => res.json())
             .then((data) => {
                 let newEvents = []
