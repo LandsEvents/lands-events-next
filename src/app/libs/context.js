@@ -1,7 +1,7 @@
 'use client';
 import React, {createContext, useContext, useEffect} from "react";
-import { event } from "@/app/components/event";
-import { news } from "@/app/components/news";
+import { event } from "@/app/event/event";
+import { nieuws } from "@/app/nieuws/nieuws";
 
 export const EventContext = createContext();
 export default function Context({children}) {
@@ -28,7 +28,7 @@ export default function Context({children}) {
             .then((data) => {
                 let newNews = []
                 for (const d of data) {
-                    newNews[newNews.length] = new news(d.id, d.name, d.body, d.event_id)
+                    newNews[newNews.length] = new nieuws(d.id, d.name, d.body, d.event_id)
                 }
                 setLoaded(true);
                 console.log(data)
