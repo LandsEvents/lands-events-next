@@ -39,6 +39,7 @@ export default function Page({ params }) {
                     })}
                 </span>
             </div>
+            <img src={"http://landsevents.test/storage/" + ev.image}/>
             <div className={"max-w-xl"}>{ev.description}</div>
         </div>
     )

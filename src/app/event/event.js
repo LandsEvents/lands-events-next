@@ -69,6 +69,7 @@ export function EventCard({event, showFullDate}) {
                     minute: 'numeric'
                 })}
             </span>
+            <img src={"http://landsevents.test/storage/" + event.image}/>
             <div className={"max-w-xl"}>{event.description}</div>
         </div>
     )
