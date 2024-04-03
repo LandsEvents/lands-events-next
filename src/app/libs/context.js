@@ -10,7 +10,7 @@ export default function Context({children}) {
     const [news, setNews] = React.useState([])
     const [hasLoaded, setLoaded] = React.useState(0)
     useEffect(() => {
-        fetch('http://landsevents.test/api/events')
+        fetch('http://lands-events-laravel.test/api/events')
             .then((res) => res.json())
             .then((data) => {
                 let newEvents = []
@@ -23,7 +23,7 @@ export default function Context({children}) {
             setLoaded(hasLoaded+1);
         });
 
-        fetch('http://landsevents.test/api/news')
+        fetch('http://lands-events-laravel.test/api/news')
             .then((res) => res.json())
             .then((data) => {
                 let newNews = []
@@ -44,7 +44,7 @@ export default function Context({children}) {
             </div>
         )
     }
-
+    console.log(events)
     return(
         <EventContext.Provider value={[events, setEvents]}>
             <NewsContext.Provider value={[news, setNews]}>

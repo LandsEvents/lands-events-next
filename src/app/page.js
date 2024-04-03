@@ -10,13 +10,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {EventContext} from "@/app/libs/context";
+import nextConfig from "../../next.config.mjs";
 
 
 export default function Home() {
   // State to keep track of accordion state
   const [accordionOpen, setAccordionOpen] = useState('');
-
+  const [events, setEvents] = useContext(EventContext)
   // Function to toggle accordion
   const toggleAccordion = (accordionId) => {
     if (accordionOpen === accordionId) {
@@ -27,8 +29,10 @@ export default function Home() {
       setAccordionOpen(accordionId);
     }
   };
+  console.log(nextConfig)
   return (
       <main className="flex min-h-screen flex-col items-center justify-between bg-white">
+        {nextConfig['server']}
         <section className="banner">
           <div className="relative">
             <Image width={2000} height={1000} src={'/images/BannerImg.jpg'} className="max-h-screen"
@@ -39,64 +43,28 @@ export default function Home() {
             </h1>
           </div>
         </section>
-
         <section className="upcoming-events pt-20">
           <h1 className=" flex justify-center pt-6 pb-6 text-3xl font-bold"> Opkomende evenementen</h1>
           <section className="event-cards flex flex-row">
-            <div className="pr-7">
-              <div
-                  className="p- max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                  <img className="rounded-t-lg" src="/docs/images/blog/BannerImg.jpg" alt=""/>
-                </a>
-                <div className="p-5">
-                  <a href="#">
-                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className=""
-                           alt="image description"/>
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                      technology acquisitions 2021</h5>
-                  </a>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                    technology acquisitions of 2021 so far, in reverse chronological order.</p>
+            {events.sort((a,b) => a.begin_date > b.begin_date).slice(0,3).map(ev =>
+                <div className="pr-7">
+                  <div
+                      className="p- max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <a href={"/event/" + ev.id} >
+                      <img className="rounded-t-lg" src="/docs/images/blog/BannerImg.jpg" alt=""/>
+                    </a>
+                    <div className="p-5">
+                      <a href={"/event/" + ev.id}>
+                        <Image width={1000} height={1000} src={'http://lands-events-laravel.test/storage/' + ev.image}
+                             className=""
+                             alt="image description"/>
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ev.title}</h5>
+                      </a>
+                      <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{ev.description}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="pr-7">
-              <div
-                  className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                  <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
-                </a>
-                <div className="p-5">
-                  <a href="#">
-                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className=""
-                           alt="image description"/>
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                      technology acquisitions 2021</h5>
-                  </a>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                    technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                </div>
-              </div>
-            </div>
-            <div className="">
-              <div
-                  className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                <a href="#">
-                  <img className="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt=""/>
-                </a>
-                <div className="p-5">
-                  <a href="#">
-                    <Image width={1000} height={1000} src={'/images/screenshot (103).png'} className=""
-                           alt="image description"/>
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                      technology acquisitions 2021</h5>
-                  </a>
-                  <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise
-                    technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                </div>
-              </div>
-            </div>
+            )}
           </section>
           <div className=" flex justify-center  pt-4">
             <button type="button"
@@ -106,6 +74,7 @@ export default function Home() {
           </div>
         </section>
 
+        {nextConfig.server}
         <section className="image-sliderc max-w-screen-2xl">
           <Swiper
               // install Swiper modules
@@ -115,9 +84,8 @@ export default function Home() {
               navigation
               pagination={{clickable: true}}
               scrollbar={{draggable: false}}
-              onSwiper={(swiper) => console.log(swiper)}
-              onSlideChange={() => console.log('slide change')}
           >
+            {events.map(ev => <SwiperSlide><Image width={1000} height={1000} src={'http://lands-events-laravel.test/storage/' + ev.image} className={"max-w-100"}/></SwiperSlide>)}
             <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
             <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
             <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>

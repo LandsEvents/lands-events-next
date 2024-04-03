@@ -7,7 +7,7 @@ export default function Page({ params }) {
     const [ev, setEv] = useState(new event())
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('http://landsevents.test/api/events/' + params.id)
+        fetch('http://lands-events-laravel.test/api/events/' + params.id)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
