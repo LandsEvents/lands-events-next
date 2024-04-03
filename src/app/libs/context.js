@@ -23,7 +23,7 @@ export default function Context({children}) {
             setLoaded(hasLoaded+1);
         });
 
-        fetch('http://lands-events-laravel.test/api/news')
+        fetch('http://landsevents.test/api/news')
             .then((res) => res.json())
             .then((data) => {
                 let newNews = []
