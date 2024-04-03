@@ -10,8 +10,9 @@ export class event {
     category;
     location;
     price;
+    image;
 
-    constructor(id, name, begin_date, end_date, description, category, location, price) {
+    constructor(id, name, begin_date, end_date, description, category, location, price, image) {
         this.id = id;
         this.name = name;
         this.begin_date = begin_date;
@@ -20,6 +21,7 @@ export class event {
         this.category = category;
         this.location = location;
         this.price = price;
+        this.image = image;
     }
 }
 

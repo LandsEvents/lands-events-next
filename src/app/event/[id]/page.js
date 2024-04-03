@@ -12,7 +12,7 @@ export default function Page({ params }) {
             .then((data) => {
                 console.log(data)
                 setEv(new event(data.id, data.name, new Date(data.begin_date), new Date(data.end_date),
-                    data.description, data.category, data.location, data.price))
+                    data.description, data.category, data.location, data.price, data.image))
                 setLoading(false)
             })
     }, []);

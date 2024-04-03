@@ -15,7 +15,7 @@ export default function Context({children}) {
             .then((data) => {
                 let newEvents = []
                 for (const d of data) {
-                    newEvents[newEvents.length] = new event(d.id, d.name, new Date(d.begin_date), new Date(d.end_date), d.description, d.category, d.location, d.price)
+                    newEvents[newEvents.length] = new event(d.id, d.name, new Date(d.begin_date), new Date(d.end_date), d.description, d.category, d.location, d.price, d.image)
                 }
                 setLoaded(true);
                 setEvents(newEvents)
