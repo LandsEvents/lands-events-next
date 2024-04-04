@@ -2,6 +2,7 @@
 import React, {createContext, useContext, useEffect} from "react";
 import { event } from "@/app/event/event";
 import { nieuws } from "@/app/nieuws/nieuws";
+import nextConfig from "../../../next.config.mjs";
 
 export const EventContext = createContext();
 export const NewsContext = createContext();
@@ -10,7 +11,7 @@ export default function Context({children}) {
     const [news, setNews] = React.useState([])
     const [hasLoaded, setLoaded] = React.useState(0)
     useEffect(() => {
-        fetch('http://lands-events-laravel.test/api/events')
+        fetch(nextConfig.server + '/api/events')
             .then((res) => res.json())
             .then((data) => {
                 let newEvents = []
@@ -23,7 +24,7 @@ export default function Context({children}) {
             setLoaded(hasLoaded+1);
         });
 
-        fetch('http://lands-events-laravel.test/api/news')
+        fetch(nextConfig.server + '/api/news')
             .then((res) => res.json())
             .then((data) => {
                 let newNews = []
@@ -44,7 +45,6 @@ export default function Context({children}) {
             </div>
         )
     }
-    console.log(events)
     return(
         <EventContext.Provider value={[events, setEvents]}>
             <NewsContext.Provider value={[news, setNews]}>

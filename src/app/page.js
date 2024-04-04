@@ -55,7 +55,7 @@ export default function Home() {
                     </a>
                     <div className="p-5">
                       <a href={"/event/" + ev.id}>
-                        <Image width={1000} height={1000} src={'http://lands-events-laravel.test/storage/' + ev.image}
+                        <Image width={1000} height={1000} src={nextConfig.server + '/storage/' + ev.image}
                              className=""
                              alt="image description"/>
                         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{ev.title}</h5>
@@ -85,11 +85,7 @@ export default function Home() {
               pagination={{clickable: true}}
               scrollbar={{draggable: false}}
           >
-            {events.map(ev => <SwiperSlide><Image width={1000} height={1000} src={'http://lands-events-laravel.test/storage/' + ev.image} className={"max-w-100"}/></SwiperSlide>)}
-            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
-            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
-            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
-            <SwiperSlide><Image width={1000} height={1000} src={'/images/screenshot (103).png'} className={"max-w-100"}/></SwiperSlide>
+            {events.map(ev => <SwiperSlide><Image width={1000} height={1000} src={nextConfig.server + '/storage/' + ev.image} className={"max-w-100"}/></SwiperSlide>)}
           </Swiper>
         </section>
 

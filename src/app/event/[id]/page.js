@@ -1,13 +1,14 @@
 'use client';
 import {event} from "@/app/event/event";
 import {useEffect, useState} from "react";
+import nextConfig from "../../../../next.config.mjs";
 
 export default function Page({ params }) {
 
     const [ev, setEv] = useState(new event())
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('http://lands-events-laravel.test/api/events/' + params.id)
+        fetch(nextConfig.server + '/api/events/' + params.id)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)

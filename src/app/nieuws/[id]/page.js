@@ -1,13 +1,14 @@
 'use client';
 import {nieuws} from "@/app/nieuws/nieuws";
 import {useEffect, useState} from "react";
+import nextConfig from "../../../../next.config.mjs";
 
 export default function Page({ params }) {
 
     const [ni, setNi] = useState(new nieuws())
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('http://lands-events-laravel.test/api/news/' + params.id)
+        fetch(nextConfig.server + '/api/news/' + params.id)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data)
