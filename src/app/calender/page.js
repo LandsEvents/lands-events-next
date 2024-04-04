@@ -68,13 +68,13 @@ export default function Calender() {
                     }
                 }
                 if(wasY && wasT)
-                    return "bg-slate-800"
+                    return "bg-lands-accent"
                 else if(wasY)
-                    return "rounded-r-lg bg-slate-800"
+                    return "rounded-r-lg bg-lands-accent"
                 else if(wasT)
-                    return "rounded-l-lg bg-slate-800"
+                    return "rounded-l-lg bg-lands-accent"
                 else
-                    return "rounded-full bg-slate-800"
+                    return "rounded-full bg-lands-accent"
             }
         }
         return null
@@ -82,11 +82,11 @@ export default function Calender() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div>
+            <div className=''>
                 {activeDate.toLocaleString('default', { year: 'numeric', month: 'long' })}
-                <div className={'flex flex-row'}>
-                    <button className={"bg-slate-900"} onClick={dateBackward}>left</button>
-                    <Calendar
+                <div className={'flex flex-row '}>
+                    <button className={"font-xl mr-5"} onClick={dateBackward}>&lt;</button>
+                    <Calendar className='border-2 border-black pt-2 pb-2 underline '
                         showNavigation={false}
                         activeStartDate={activeDate}
                         tileClassName={({date, view}) => DayStyling(date, view)}
@@ -94,8 +94,9 @@ export default function Calender() {
                         showFixedNumberOfWeeks={false}
                         maxDetail={"month"}
                     />
-                    <button className={"bg-slate-900"} onClick={dateForward}>right</button>
+                    <button className={"font-xl ml-5"} onClick={dateForward}>&gt;</button>
                 </div>
+                <div className='mt-[50px] border-b border-black w-full'></div>
                 <div className={"flex-col items-center"}>{eventsInMonth.map((e) => {return <tr key={e.id}><EventCard className={'flex-1'} event={e} showFullDate={false}/></tr>} )}</div>
             </div>
         </main>

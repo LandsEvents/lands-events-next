@@ -9,7 +9,7 @@ export default function Header(){
             <div className="w-screen h-[100px] bg-lands-accent flex flex-row justify-center">
                 <div className="ml-[200px] w-1/3 flex flex-row justify-start">
                     <div className="mr-[50px] h-[125px] w-[250px] bg-white">
-                        <a></a>
+                        <a><img src='/landslogo.png'></img></a>
                     </div>
                 </div>
                 <div className="w-1/3 flex flex-row justify-start">

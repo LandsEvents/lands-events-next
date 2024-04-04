@@ -49,8 +49,8 @@ export function EventCard({event, showFullDate}) {
     }
 
     return (
-        <div>
-            <div>
+        <div className='mt-[50px] flex w-[500px] h-[75px] bg-lands-achter border border-black rounded-lg mb-[5px]'>
+            <div className='text-white'>
                 <Link href={"/event/" + event.id}>{event.name}</Link>
                 <br/>
                 <span className={'text-sm text-slate-500'}>{event.location}</span>
@@ -70,7 +70,7 @@ export function EventCard({event, showFullDate}) {
                 })}
             </span>
             <img src={"http://landsevents.test/storage/" + event.image}/>
-            <div className={"max-w-xl"}>{event.description}</div>
+            <div className={"max-w-xl text-white"}>{event.description}</div>
         </div>
     )
 }
